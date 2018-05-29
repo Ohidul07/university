@@ -98,7 +98,7 @@ class TMSController extends Controller
             'cv_url' =>'required', 
         ]);
 
-            $data = $request->all();
+        $data = $request->all();
             
         if ($request->hasFile('photo_url')) {
 

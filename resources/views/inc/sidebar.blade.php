@@ -34,6 +34,20 @@
 							<li><a href="starters/2_col.html">2 columns</a></li>
 						</ul>
 					</li>
+					<li>
+						<a href="#"><i class="icon-stack"></i> <span>COURSES</span></a>
+						<ul>
+							<li><a href="{{ url('/courses') }}">Add Course</a></li>
+							<li><a href="{{ url('/courses/informations') }}">Course Informations</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="#"><i class="icon-stack"></i> <span>EXAMINATIONS</span></a>
+						<ul>
+							<li><a href="{{ url('/examinations') }}">Add Examination</a></li>
+							<li><a href="{{ url('/examinations/informations') }}">Examination Informations</a></li>
+						</ul>
+					</li>
 				</ul>
 			</div>
 		</div>

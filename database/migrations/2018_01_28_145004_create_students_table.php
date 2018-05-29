@@ -26,7 +26,9 @@ class CreateStudentsTable extends Migration
             $table->string('parents_mobile_no')->nullable();
             $table->string('start_date')->nullable();
             $table->string('end_date')->nullable();
-            $table->string('programme_type')->nullable();
+            $table->integer('programme_type')->nullable()->unsigned();
+            $table->integer('session')->nullable()->unsigned();
+            $table->integer('semester')->nullable()->unsigned(); 
             $table->integer('user_id')->unsigned();
             $table->integer('created_by')->unsigned();
             $table->integer('updated_by')->unsigned();
@@ -34,6 +36,9 @@ class CreateStudentsTable extends Migration
         });
 
         Schema::table('students', function (Blueprint $table) {
+            $table->foreign('programme_type')->references('id')->on('programmes')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('session')->references('id')->on('sessions')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('semester')->references('id')->on('semesters')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('updated_by')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');

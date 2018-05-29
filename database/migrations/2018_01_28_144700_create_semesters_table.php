@@ -15,10 +15,17 @@ class CreateSemestersTable extends Migration
     {
         Schema::create('semesters', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('semester_id');
-            $table->integer('year');
-            $table->string('title');
+            $table->string('semester_id');
+            $table->string('year');
+            $table->string('semester');
+            $table->integer('created_by')->unsigned();
+            $table->integer('updated_by')->unsigned();
             $table->timestamps();
+        });
+
+        Schema::table('semesters', function (Blueprint $table) {
+            $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('updated_by')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
