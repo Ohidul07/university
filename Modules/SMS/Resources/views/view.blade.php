@@ -2,7 +2,7 @@
 @section('content')
 <div class="panel panel-flat">
             <div class="panel-heading">
-              <h5 class="panel-title">Edit Student Information</h5>
+              <h5 class="panel-title">Student Informations</h5>
             </div>
 
             <div class="panel-body">
@@ -40,6 +40,7 @@
                       </span>
                     @endif
                   </div>
+
                   <div class="form-group">
                     <label class="control-label col-lg-2">Email</label>
                     <div class="col-lg-10">
@@ -88,6 +89,28 @@
                       </span>
                     @endif
                   </div>
+            
+                  <div class="form-group">
+                    <label class="control-label col-lg-2">Programme Type</label>
+                    <div class="col-lg-10">
+                      <input type="text" class="form-control"  value="{{ $student->Programme->programme_type }}" name="student_id" placeholder="Enter Student Id" readonly="readonly">
+                      </div>
+                  </div>
+           
+                  <div class="form-group">
+                    <label class="control-label col-lg-2">Semester</label>
+                    <div class="col-lg-10">
+                      <input type="text" class="form-control"  value="{{ $student->Semester->year }} {{ $student->Semester->semester }}" name="student_id" placeholder="Enter Student Id" readonly="readonly">
+                      </div>
+                  </div>
+           
+                  <div class="form-group">
+                    <label class="control-label col-lg-2">Session</label>
+                    <div class="col-lg-10">
+                      <input type="text" class="form-control"  value="{{ $student->Session->session }}" name="student_id" placeholder="Enter Student Id" readonly="readonly">
+                      </div>
+                  </div>
+
                   <div class="form-group">
                     <label class="control-label col-lg-2">Mobile No</label>
                     <div class="col-lg-10">
@@ -124,7 +147,6 @@
                     @endif
                   </div>
 
-
                   <div class="form-group">
                     <label class="control-label col-lg-2">Parents Mobile No</label>
                     <div class="col-lg-10">
@@ -137,51 +159,6 @@
                     @endif
                   </div>
 
-                  <div class="form-group">
-                    <label class="control-label col-lg-2">Start Date</label>
-                    <div class="col-lg-10">
-                      <input type="text" class="form-control" value="{{$student->start_date}}"  name="start_date" placeholder="Enter Start Date" readonly="readonly">
-                    </div>
-                    @if ($errors->has('start_date'))
-                      <span class="help-block">
-                          <strong>{{ $errors->first('start_date') }}</strong>
-                      </span>
-                    @endif
-                  </div>
-
-                  <div class="form-group">
-                    <label class="control-label col-lg-2">End Date</label>
-                    <div class="col-lg-10">
-                      <input type="text" class="form-control" value="{{$student->end_date}}"  name="end_date" placeholder="Enter End Date" readonly="readonly">
-                    </div>
-                    @if ($errors->has('end_date'))
-                      <span class="help-block">
-                          <strong>{{ $errors->first('end_date') }}</strong>
-                      </span>
-                    @endif
-                  </div>
-
-                  <div class="form-group">
-                    <label class="control-label col-lg-2">Programme Type</label>
-                    <div class="col-lg-10">
-                        <select name="programme_type" class="form-control" disabled="disabled">
-                            <option value="">Select Program</option>
-                            @if($student->programme_type == 'bsc')
-                            <option value="bsc" selected>BSc(Engg)</option>
-                            @else
-                            <option value="bsc">BSc(Engg)</option>
-                            @endif
-                            
-                            @if($student->programme_type == 'msc')
-                            <option value="msc" selected>MSc(Engg)</option>
-                            @else
-                            <option value="msc">MSc(Engg)</option>
-
-                            @endif
-                           
-                        </select>
-                      </div>
-                  </div>
                  </fieldset>
               {!! Form::close() !!}
             </div>

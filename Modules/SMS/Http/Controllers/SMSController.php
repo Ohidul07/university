@@ -5,6 +5,9 @@ namespace Modules\SMS\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use App\Programme;
+use App\Semester;
+use App\Session;
 
 //Models...
 use App\User;
@@ -86,8 +89,11 @@ class SMSController extends Controller
     {
         $user=user::where('id',$id)->first();
         $student=Student::where('user_id',$id)->first();
+        $semesters=Semester::all();
+        $programmes=Programme::all();
+        $sessions=Session::all();
 
-        return view('sms::edit',compact('student','user'));
+        return view('sms::edit',compact('student','user','sessions','programmes','semesters'));
     }
 
 
@@ -100,25 +106,28 @@ class SMSController extends Controller
             'gender' => 'required',
             'student_id' => 'required',
             'programme_type' => 'required',
-            'photo_url' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'semester' => 'required',
+            'session' => 'required',
+            'photo_url' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
             $data = $request->all() ;
 
-
+$studentData = Student::where('user_id',$id)->first();
 
          if ($request->hasFile('photo_url')) {
 
-            $studentData = Student::where('user_id',$id)->first();
+            
             $image = $request->file('photo_url');
             $name = time().'.'.$image->getClientOriginalExtension();
             $destinationPath = public_path('/images');
             $image->move($destinationPath, $name);
             $studentData->photo_url = $name;
-            
 
+        }
+       
 
-            $userData = User::find($id);
+        $userData = User::find($id);
 
             $userData->first_name = $data['first_name'];
             $userData->second_name = $data['second_name'];
@@ -132,18 +141,18 @@ class SMSController extends Controller
                 $studentData->present_address = $data['present_address'];
                 $studentData->permanent_address = $data['permanent_address'];
                 $studentData->parents_mobile_no = $data['parents_mobile_no'];
-                $studentData->start_date = $data['start_date'];
-                $studentData->end_date = $data['end_date'];
                 $studentData->programme_type = $data['programme_type'];
+                $studentData->semester = $data['semester'];
+                $studentData->session = $data['session'];
 
                 if($studentData->update())
                 {
-                    return redirect()->route('approved-student');
+                     return redirect()->route('approved-student')
+                    ->with('alert.status', 'success')
+                    ->with('alert.message', 'Saved Successfully');
+                    
                 }
             }
-
-
-        }
 
 
     }

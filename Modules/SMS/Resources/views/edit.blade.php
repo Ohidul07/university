@@ -18,7 +18,7 @@
                     <img style="height: 200px;width: 200px;text-align: center; " src="{{ url('images/'.$student->photo_url) }}">
                     @endif
                   </div>
-                 
+
                   <div class="form-group">
                     <label class="control-label col-lg-2">First Name</label>
                     <div class="col-lg-10">
@@ -89,6 +89,78 @@
                       </span>
                     @endif
                   </div>
+
+
+
+                  <div class="form-group">
+                    <label class="control-label col-lg-2">Programme Type</label>
+                    <div class="col-lg-10">
+                        <select name="programme_type" class="form-control">
+                            
+                            <option value="">Select Programme</option>
+                           @foreach($programmes as $programme)
+                           @if($student->programme_type==$programme->id)
+                            <option value="{{$programme->id}}" selected>{{$programme->programme_type}}</option>
+                            @else
+                            <option value="{{$programme->id}}">{{$programme->programme_type}}</option>
+                            @endif
+                            @endforeach
+                        </select>
+                         @if ($errors->has('programme_type'))
+                              <span class="help-block">
+                                  <strong>{{ $errors->first('programme_type') }}</strong>
+                              </span>
+                            @endif
+                      </div>
+                  </div>
+
+
+                   <div class="form-group">
+                    <label class="control-label col-lg-2">Semester</label>
+                    <div class="col-lg-10">
+                        <select name="semester" class="form-control">
+                            <option value="">Select Semester</option>
+                            @foreach($semesters as $semester)
+                            @if($student->semester==$semester->id)
+                            <option value="{{$semester->id}}" selected>{{$semester->semester_id}}</option>
+                            @else
+                            <option value="{{$semester->id}}">{{$semester->semester_id}}</option>
+                            @endif
+                            @endforeach   
+                        </select>
+                        @if ($errors->has('semester'))
+                              <span class="help-block">
+                                  <strong>{{ $errors->first('semester') }}</strong>
+                              </span>
+                            @endif
+                      </div>
+                  </div>
+
+
+
+                  <div class="form-group">
+                    <label class="control-label col-lg-2">Session</label>
+                    <div class="col-lg-10">
+                        <select name="session" class="form-control">
+                            
+                            <option value="">Select Session</option>
+                        @foreach($sessions as $session)
+                           @if($student->session==$session->id)
+                            <option value="{{$session->id}}" selected>{{$session->session}}</option>
+                           @else
+                            <option value="{{$session->id}}">{{$session->session}}</option>
+                           @endif 
+                            @endforeach
+                        </select>
+                         @if ($errors->has('session'))
+                              <span class="help-block">
+                                  <strong>{{ $errors->first('session') }}</strong>
+                              </span>
+                            @endif
+                      </div>
+                  </div>
+
+
                   <div class="form-group">
                     <label class="control-label col-lg-2">Mobile No</label>
                     <div class="col-lg-10">
@@ -113,6 +185,7 @@
                     @endif
                   </div>
 
+
                   <div class="form-group">
                     <label class="control-label col-lg-2">Permanent Adddress</label>
                     <div class="col-lg-10">
@@ -126,6 +199,7 @@
                   </div>
 
 
+                  
                   <div class="form-group">
                     <label class="control-label col-lg-2">Parents Mobile No</label>
                     <div class="col-lg-10">
@@ -138,50 +212,6 @@
                     @endif
                   </div>
 
-                  <div class="form-group">
-                    <label class="control-label col-lg-2">Start Date</label>
-                    <div class="col-lg-10">
-                      <input type="text" class="form-control" value="{{$student->start_date}}"  name="start_date" placeholder="Enter Start Date">
-                    </div>
-                    @if ($errors->has('start_date'))
-                      <span class="help-block">
-                          <strong>{{ $errors->first('start_date') }}</strong>
-                      </span>
-                    @endif
-                  </div>
-
-                  <div class="form-group">
-                    <label class="control-label col-lg-2">End Date</label>
-                    <div class="col-lg-10">
-                      <input type="text" class="form-control" value="{{$student->end_date}}"  name="end_date" placeholder="Enter End Date">
-                    </div>
-                    @if ($errors->has('end_date'))
-                      <span class="help-block">
-                          <strong>{{ $errors->first('end_date') }}</strong>
-                      </span>
-                    @endif
-                  </div>
-
-                  <div class="form-group">
-                    <label class="control-label col-lg-2">Programme Type</label>
-                    <div class="col-lg-10">
-                        <select name="programme_type" class="form-control">
-                            <option value="">Select Programme</option>
-                            @if($student->programme_type == 'bsc')
-                            <option value="bsc" selected>BSc(Engg)</option>
-                            @else
-                            <option value="bsc">BSc(Engg)</option>
-                            @endif
-                            @if($student->programme_type == 'msc')
-                            <option value="msc" selected>MSc(Engg)</option>
-                            @else
-                            <option value="msc">MSc(Engg)</option>
-
-                            @endif
-                           
-                        </select>
-                      </div>
-                  </div>
                  </fieldset>
 
                 <div class="text-right">

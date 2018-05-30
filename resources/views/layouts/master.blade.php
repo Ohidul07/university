@@ -28,7 +28,12 @@
 	<script type="text/javascript" src="{{ url('assets/js/plugins/ui/moment/moment.min.js') }}"></script>
 	<script type="text/javascript" src="{{ url('assets/js/plugins/pickers/daterangepicker.js') }}"></script>
 	<script type="text/javascript" src="{{ url('assets/js/core/app.js') }}"></script>
-	<script type="text/javascript" src="{{ url('assets/js/pages/dashboard.js') }}"></script>
+
+	<script type="text/javascript" src="{{ url('assets/js/plugins/tables/datatables/datatables.min.js') }}"></script>
+
+	<script type="text/javascript" src="{{ url('assets/js/plugins/forms/selects/select2.min.js') }}"></script>
+
+	<script type="text/javascript" src="{{ url('assets/js/pages/datatables_basic.js') }}"></script>
 
 	@yield('script')
 

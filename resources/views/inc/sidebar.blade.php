@@ -48,6 +48,13 @@
 							<li><a href="{{ url('/examinations/informations') }}">Examination Informations</a></li>
 						</ul>
 					</li>
+					<li>
+						<a href="#"><i class="icon-stack"></i> <span>MARKS</span></a>
+						<ul>
+							<li><a href="{{ url('/marks') }}">Marks Entry</a></li>
+							<li><a href="{{ url('/marks_show') }}">Marks Show</a></li>
+						</ul>
+					</li>
 				</ul>
 			</div>
 		</div>

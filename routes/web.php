@@ -29,3 +29,11 @@ Route::get('/examinations', 'examController@create')->name('examinations');
 Route::post('/examinations/store', 'examController@store')->name('examination_store');
 Route::get('/examinations/informations', 'examController@exam_informations')->name('examination_informations');
 
+//mark controller
+
+Route::get('/marks', 'markController@select_exam')->name('marks');
+Route::get('/marks_entry', 'markController@mark_entry')->name('marks_entry');
+Route::get('/marks_show', 'markController@mark_show')->name('marks_show');
+
+
+

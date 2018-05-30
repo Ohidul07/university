@@ -27,6 +27,9 @@ class CreateCourseMarksTable extends Migration
             $table->string('lab_quiz')->nullable();
             $table->string('lab_viva')->nullable();
             $table->integer('student_exam_course')->unsigned();
+            $table->integer('examination_id')->unsigned();
+            $table->integer('student_id')->unsigned();
+            $table->integer('course_id')->unsigned();
             $table->integer('teacher_id')->unsigned();
             $table->integer('created_by')->unsigned();
             $table->integer('updated_by')->unsigned();
@@ -36,6 +39,9 @@ class CreateCourseMarksTable extends Migration
         Schema::table('course_marks', function (Blueprint $table) {
             $table->foreign('student_exam_course')->references('id')->on('student_exam_courses')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('teacher_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('examination_id')->references('id')->on('examinations')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('student_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('updated_by')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             

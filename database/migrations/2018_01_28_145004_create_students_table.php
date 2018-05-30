@@ -24,8 +24,6 @@ class CreateStudentsTable extends Migration
             $table->string('present_address')->nullable();
             $table->string('permanent_address')->nullable();
             $table->string('parents_mobile_no')->nullable();
-            $table->string('start_date')->nullable();
-            $table->string('end_date')->nullable();
             $table->integer('programme_type')->nullable()->unsigned();
             $table->integer('session')->nullable()->unsigned();
             $table->integer('semester')->nullable()->unsigned(); 
