@@ -3,7 +3,7 @@
 	  <div class="content">
 	    <div class="panel panel-flat">
 			<div class="panel-heading">
-				<h6 class="panel-title">Lab Marks Entry</h6>
+				<h6 class="panel-title">Marks Entry</h6>
 				<div class="heading-elements">
 					<ul class="icons-list">
 	            		<li><a data-action="reload"></a></li>
@@ -18,38 +18,48 @@
 			</div>
 		    <?php $helper = new \App\Lib\Helper; ?>
 	        <div class="panel-body">
-	        	{!! Form::open(['url'=>route('lab_marks_store'),'method'=>'POST', 'enctype' =>"multipart/form-data",'files' => true,'class' => 'form-horizontal']) !!}
+	        	{!! Form::open(['url'=>route('marks_store'),'method'=>'POST', 'enctype' =>"multipart/form-data",'files' => true,'class' => 'form-horizontal']) !!}
 	        		<div class="row">
-						<div class="col-md-2">
+						<div class="col-md-1">
 	                        <div class="form-group">
 	                            <label>Student Id</label>
 	                        </div>
 						</div>
 						<div class="col-md-2">
 	                        <div class="form-group">
-	                            <label>Lab Performance</label>
+	                            <label>Internal Marks</label>
 	                        </div>
 						</div>
 
 						<div class="col-md-2">
 							<div class="form-group">
-	                            <label>Lab Attendence</label>
+	                            <label>External Marks</label>
 	                        </div>
 						</div>
 						<div class="col-md-2">
 							<div class="form-group">
-	                            <label>Lab Final</label>
+	                            <label>Third Examiner</label>
 	                        </div>
 						</div>
 						<div class="col-md-2">
 							<div class="form-group">
-	                            <label>Lab Quiz</label>
+	                            <label>Class Test</label>
 	                        </div>
 
 						</div>
-						<div class="col-md-2">
+						<div class="col-md-1">
 							<div class="form-group">
-	                           <label>Lab Viva</label>
+	                           <label>Attendence</label>
+	                        </div>
+						</div>
+						<div class="col-md-1">
+							<div class="form-group">
+	                           <label>Total</label>
+	                        </div>
+						</div>
+						<div class="col-md-1">
+							<div class="form-group">
+	                           <label>GPA</label>
 	                        </div>
 						</div>
 					</div>
@@ -58,7 +68,7 @@
 					 <input type="hidden" name="examination_id" class="form-control" placeholder="Student Id"  value="{{ $examination->id}}">
 					@foreach($students as $student)
 					<div class="row">
-						<div class="col-md-2">
+						<div class="col-md-1">
 	                        <div class="form-group">
 	                            <input type="text" name="" class="form-control" placeholder="Student Id" disabled value="{{ $student->student_id}}">
 	                            <input type="hidden" name="student_id[]" class="form-control" placeholder="Student Id" value="{{ $student->id}}">
@@ -66,38 +76,44 @@
 						</div>
 						<div class="col-md-2">
 	                        <div class="form-group">
-	                            <input type="text" name="lab_performance[]" class="form-control" placeholder="Lab Performance" value="{{$helper->mark($student->id,'lab_performance',$examination->id,$course->id)}}">
+	                            <input type="text" name="internal_mark[]" class="form-control" placeholder="Internal Marks" disabled value="{{$helper->mark($student->id,'internal_mark',$examination->id,$course->id)}}">
 	                        </div>
 						</div>
 
 						<div class="col-md-2">
 							<div class="form-group">
-	                            <input type="text" class="form-control" name="lab_attendence[]" placeholder="Lab Attendence" value="{{$helper->mark($student->id,'lab_attendence',$examination->id,$course->id)}}" >
+	                            <input type="text" class="form-control" name="external_mark[]" placeholder="External Marks" disabled value="{{$helper->mark($student->id,'external_mark',$examination->id,$course->id)}}" >
 	                        </div>
 						</div>
 						<div class="col-md-2">
 							<div class="form-group">
-	                            <input type="text" class="form-control" name="lab_final[]" placeholder="Lab Final" value="{{$helper->mark($student->id,'lab_final',$examination->id,$course->id)}}">
+	                            <input type="text" class="form-control" name="third_examiner_mark[]" placeholder="Third Examiner" disabled value="{{$helper->mark($student->id,'third_examiner_mark',$examination->id,$course->id)}}">
 	                        </div>
 						</div>
 						<div class="col-md-2">
 							<div class="form-group">
-	                            <input type="text" class="form-control" name="lab_quiz[]" placeholder="Lab Quiz" value="{{$helper->mark($student->id,'lab_quiz',$examination->id,$course->id)}}">
+	                            <input type="text" class="form-control" name="class_test[]" placeholder="Class Test" disabled value="{{$helper->mark($student->id,'class_test',$examination->id,$course->id)}}">
 	                        </div>
 
 						</div>
-						<div class="col-md-2">
+						<div class="col-md-1">
 							<div class="form-group">
-	                            <input type="text" class="form-control" name="lab_viva[]" placeholder="Lab Viva" value="{{$helper->mark($student->id,'lab_viva',$examination->id,$course->id)}}">
+	                            <input type="text" class="form-control" name="attendence[]" placeholder="Attendence" disabled value="{{$helper->mark($student->id,'attendence',$examination->id,$course->id)}}">
+	                        </div>
+						</div>
+						<div class="col-md-1">
+							<div class="form-group">
+	                            <input type="text" class="form-control" name="attendence[]" placeholder="Attendence" disabled value="{{$helper->totalMark($student->id,$course->CourseType->course_type,$examination->id,$course->id)}}">
+	                        </div>
+						</div>
+						<div class="col-md-1">
+							<div class="form-group">
+	                            <input type="text" class="form-control" name="attendence[]" placeholder="Attendence" disabled value="{{$helper->GPA($student->id,$course->CourseType->course_type,$examination->id,$course->id)}}">
 	                        </div>
 						</div>
 					</div>
 					<?php $i = $i+1;?>
 					@endforeach
-
-	                <div class="text-right">
-	                	<button type="submit" class="btn btn-primary">Submit <i class="icon-arrow-right14 position-right"></i></button>
-	                </div>
 	            {!! Form::close() !!}
 		    </div>
 		</div>

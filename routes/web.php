@@ -34,7 +34,10 @@ Route::get('/examinations/informations', 'examController@exam_informations')->na
 Route::get('/marks', 'markController@select_exam')->name('marks');
 Route::get('/marks_entry', 'markController@mark_entry')->name('marks_entry');
 Route::post('/marks_store', 'markController@store')->name('marks_store');
-Route::get('/marks_show', 'markController@mark_show')->name('marks_show');
+Route::get('/lab_marks_entry', 'markController@lab_mark_entry')->name('lab_marks_entry');
+Route::post('/lab_marks_store', 'markController@lab_store')->name('lab_marks_store');
+Route::get('/marks_show_by_exam_and_course', 'markController@marks_show_by_exam_and_course')->name('marks_show_by_exam_and_course');
+Route::get('/marks_show', 'markController@marks_show')->name('marks_show');
 
 
 

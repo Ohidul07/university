@@ -19,22 +19,6 @@
 						</ul>
 					</li>
 					<li>
-						<a href="#"><i class="icon-droplet2"></i> <span>LMS</span></a>
-						<ul>
-							<li><a href="colors_primary.html">Primary palette</a></li>
-							<li><a href="colors_danger.html">Danger palette</a></li>
-							<li><a href="colors_success.html">Success palette</a></li>
-						</ul>
-					</li>
-					<li>
-						<a href="#"><i class="icon-stack"></i> <span>RMS</span></a>
-						<ul>
-							<li><a href="starters/horizontal_nav.html">Horizontal navigation</a></li>
-							<li><a href="starters/1_col.html">1 column</a></li>
-							<li><a href="starters/2_col.html">2 columns</a></li>
-						</ul>
-					</li>
-					<li>
 						<a href="#"><i class="icon-stack"></i> <span>COURSES</span></a>
 						<ul>
 							<li><a href="{{ url('/courses') }}">Add Course</a></li>
@@ -52,7 +36,7 @@
 						<a href="#"><i class="icon-stack"></i> <span>MARKS</span></a>
 						<ul>
 							<li><a href="{{ url('/marks') }}">Marks Entry</a></li>
-							<li><a href="{{ url('/marks_show') }}">Marks Show</a></li>
+							<li><a href="{{ url('/marks_show_by_exam_and_course') }}">Marks Show</a></li>
 						</ul>
 					</li>
 				</ul>
