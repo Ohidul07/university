@@ -90,7 +90,7 @@
 					@yield('content')
 
 					<div class="footer text-muted">
-						&copy; 2018. <a href="#">University Management System</a> by <a href="">Ohidul &amp; Niloy</a>
+						&copy; 2018. <a href="#">University Automation System</a> by <a href="">Ohidul &amp; Niloy</a>
 					</div>
 
 				</div>

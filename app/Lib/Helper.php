@@ -142,7 +142,10 @@ class Helper
         $course = course::find($course_id);
 
         $exammark = Mark::where('student_id',$student_id)->where('examination_id',$examination_id)->where('course_id',$course_id)->first();
-
+        if($exammark==null)
+        {
+            return 0;
+        }
         if($course_type=='Theory')
         {
             $third_examiner_mark= $exammark->third_examiner_mark;
@@ -190,6 +193,11 @@ class Helper
         $course = course::find($course_id);
 
         $exammark = Mark::where('student_id',$student_id)->where('examination_id',$examination_id)->where('course_id',$course_id)->first();
+        
+        if($exammark==null)
+        {
+            return 0;
+        }
         if($course_type=='Theory')
         {
             $third_examiner_mark= $exammark->third_examiner_mark;

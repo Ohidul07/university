@@ -20,7 +20,7 @@
 	        <div class="panel-body">
 	        	{!! Form::open(['url'=>route('marks_store'),'method'=>'POST', 'enctype' =>"multipart/form-data",'files' => true,'class' => 'form-horizontal']) !!}
 	        		<div class="row">
-						<div class="col-md-1">
+						<div class="col-md-2">
 	                        <div class="form-group">
 	                            <label>Student Id</label>
 	                        </div>
@@ -41,7 +41,7 @@
 	                            <label>Third Examiner</label>
 	                        </div>
 						</div>
-						<div class="col-md-2">
+						<div class="col-md-1">
 							<div class="form-group">
 	                            <label>Class Test</label>
 	                        </div>
@@ -68,7 +68,7 @@
 					 <input type="hidden" name="examination_id" class="form-control" placeholder="Student Id"  value="{{ $examination->id}}">
 					@foreach($students as $student)
 					<div class="row">
-						<div class="col-md-1">
+						<div class="col-md-2">
 	                        <div class="form-group">
 	                            <input type="text" name="" class="form-control" placeholder="Student Id" disabled value="{{ $student->student_id}}">
 	                            <input type="hidden" name="student_id[]" class="form-control" placeholder="Student Id" value="{{ $student->id}}">
@@ -90,7 +90,7 @@
 	                            <input type="text" class="form-control" name="third_examiner_mark[]" placeholder="Third Examiner" disabled value="{{$helper->mark($student->id,'third_examiner_mark',$examination->id,$course->id)}}">
 	                        </div>
 						</div>
-						<div class="col-md-2">
+						<div class="col-md-1">
 							<div class="form-group">
 	                            <input type="text" class="form-control" name="class_test[]" placeholder="Class Test" disabled value="{{$helper->mark($student->id,'class_test',$examination->id,$course->id)}}">
 	                        </div>

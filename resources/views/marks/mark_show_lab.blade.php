@@ -20,7 +20,7 @@
 	        <div class="panel-body">
 	        	{!! Form::open(['url'=>route('lab_marks_store'),'method'=>'POST', 'enctype' =>"multipart/form-data",'files' => true,'class' => 'form-horizontal']) !!}
 	        		<div class="row">
-						<div class="col-md-1">
+						<div class="col-md-2">
 	                        <div class="form-group">
 	                            <label>Student Id</label>
 	                        </div>
@@ -41,7 +41,7 @@
 	                            <label>Lab Final</label>
 	                        </div>
 						</div>
-						<div class="col-md-2">
+						<div class="col-md-1">
 							<div class="form-group">
 	                            <label>Quiz</label>
 	                        </div>
@@ -68,7 +68,7 @@
 					 <input type="hidden" name="examination_id" class="form-control" placeholder="Student Id"  value="{{ $examination->id}}">
 					@foreach($students as $student)
 					<div class="row">
-						<div class="col-md-1">
+						<div class="col-md-2">
 	                        <div class="form-group">
 	                            <input type="text" name="" class="form-control" placeholder="Student Id" disabled value="{{ $student->student_id}}">
 	                            <input type="hidden" name="student_id[]" class="form-control" placeholder="Student Id" value="{{ $student->id}}">
@@ -90,7 +90,7 @@
 	                            <input type="text" class="form-control" name="lab_final[]" placeholder="Lab Final" disabled value="{{$helper->mark($student->id,'lab_final',$examination->id,$course->id)}}">
 	                        </div>
 						</div>
-						<div class="col-md-2">
+						<div class="col-md-1">
 							<div class="form-group">
 	                            <input type="text" class="form-control" name="lab_quiz[]" placeholder="Lab Quiz" disabled value="{{$helper->mark($student->id,'lab_quiz',$examination->id,$course->id)}}">
 	                        </div>
