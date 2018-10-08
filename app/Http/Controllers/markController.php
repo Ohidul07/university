@@ -7,6 +7,7 @@ use App\Semester;
 use App\course;
 use App\models\Sms\Student;
 use App\Examination;
+use App\StudentExamCourses;
 use App\Mark;
 use Auth;
 
@@ -233,6 +234,52 @@ class markController extends Controller
         }
         
 
+    }
+
+    public function search_student(){
+        return view('marks.search_student');
+    }
+
+    public function show_student_cgpa(){
+        $student_id = $_GET["student_id"];
+        $infos=Student::where('student_id',$student_id)->first();
+
+        
+        if($infos){
+            $studentExams=Mark::where('student_id',$infos->user_id)->get();
+        $examinfos=Examination::all();
+
+        return view('marks.show_student_cgpa',compact('infos','examinfos','studentExams'));
+        }
+        else{
+            return redirect()->back()
+                ->with('alert.status', 'danger')
+                ->with('alert.message', ' Student Id not found');
+        }
+
+    }
+
+    public function courseMarkDetails()
+    {
+        if($_GET["examination"] !=null && $_GET["student"] !=null)
+        {
+
+            $exam_id = $_GET["examination"];
+            $student_id = $_GET["student"];
+            $examinfos=Examination::find($exam_id);
+            $infos=Student::where('user_id',$student_id)->first();
+
+            $studentCourses=Mark::where('student_id',$student_id)->where('examination_id',$exam_id)->get();
+
+            return view('marks.student_course_mark_theory',compact('infos','studentCourses','student_id','exam_id','examinfos'));
+          
+           
+        }else
+        {
+         return redirect()->back()
+            ->with('alert.status', 'danger')
+            ->with('alert.message', 'You have to select exam and course first');
+        }
     }
 
     public function edit($id)

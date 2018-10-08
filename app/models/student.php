@@ -44,6 +44,10 @@ class student extends Model
     {
     	return $this->belongsTo('App\User','created_by');
     }
+    public function user()
+    {
+        return $this->belongsTo('App\User','user_id');
+    }
 
     public function updatedBy()
     {

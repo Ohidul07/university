@@ -279,4 +279,26 @@ class Helper
         }
     }
 
+
+    public function examcgpa($student_id,$examination_id)
+    {
+        $examCourses = Mark::where('examination_id',$examination_id)->where('student_id',$student_id)->get();
+       $gpa = 0;
+       $count = 0;
+       foreach ($examCourses as $examCourse) {
+        $course = course::find($examCourse->course_id);
+        $student_id = $student_id;
+        $examination_id = $examination_id;
+        $course_id = $examCourse->course_id;
+        $course_type = $course->CourseType->course_type;
+
+        $gpa = $gpa+$this->GPA($student_id,$course_type,$examination_id,$course_id);
+        $count = $count+1;
+       }
+
+       $finalgpa = $gpa/$count;
+       return  $finalgpa;
+
+    }
+
 }

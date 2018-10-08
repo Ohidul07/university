@@ -37,6 +37,7 @@
 						<ul>
 							<li><a href="{{ url('/marks') }}">Marks Entry</a></li>
 							<li><a href="{{ url('/marks_show_by_exam_and_course') }}">Marks Show</a></li>
+							<li><a href="{{ url('/search_student') }}">Search A Student</a></li>
 						</ul>
 					</li>
 				</ul>

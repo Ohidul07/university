@@ -38,6 +38,9 @@ Route::get('/lab_marks_entry', 'markController@lab_mark_entry')->name('lab_marks
 Route::post('/lab_marks_store', 'markController@lab_store')->name('lab_marks_store');
 Route::get('/marks_show_by_exam_and_course', 'markController@marks_show_by_exam_and_course')->name('marks_show_by_exam_and_course');
 Route::get('/marks_show', 'markController@marks_show')->name('marks_show');
+Route::get('/search_student', 'markController@search_student')->name('search_student');
+Route::get('/show_student_cgpa', 'markController@show_student_cgpa')->name('show_student_cgpa');
+Route::get('/student/course/mark/details/', 'markController@courseMarkDetails')->name('student_course_mark_details');
 
 
 
